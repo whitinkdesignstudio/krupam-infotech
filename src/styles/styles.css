@@ -2919,6 +2919,13 @@ body.fx-ready .fx-target.from-right {
   transform: translate(85px);
 }
 
+@media (max-width: 1200px) {
+  body.fx-ready .fx-target.from-left,
+  body.fx-ready .fx-target.from-right {
+    transform: translateY(32px) !important;
+  }
+}
+
 body.fx-ready .fx-target.is-visible {
   opacity: 1;
   transform: none;
@@ -3678,6 +3685,13 @@ body.fx-ready .fx-target[data-reveal="left"] {
 
 body.fx-ready .fx-target[data-reveal="right"] {
   transform: translate(75px) rotateY(-4deg);
+}
+
+@media (max-width: 1200px) {
+  body.fx-ready .fx-target[data-reveal="left"],
+  body.fx-ready .fx-target[data-reveal="right"] {
+    transform: translateY(32px) !important;
+  }
 }
 
 body.fx-ready .fx-target[data-reveal="left"].is-visible,
@@ -11341,19 +11355,15 @@ img {
   }
 }
 
-/* Reviews Section Headline Strictly One Line */
+/* Reviews Section Headline */
 .voices-one-line-title {
-  white-space: nowrap !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
   font-family: var(--font-poppins) !important;
   font-size: clamp(1.4rem, 2.5vw, 2.4rem) !important;
-  line-height: 1.2 !important;
+  line-height: 1.25 !important;
   margin: 8px 0 0 !important;
-}
-
-@media (max-width: 820px) {
-  .voices-one-line-title {
-    white-space: normal !important;
-  }
 }
 
 /* Reviews Carousel Auto-Scroll Enhancements */
@@ -13465,8 +13475,33 @@ body {
 img,
 video,
 iframe,
+canvas,
+model-viewer,
 svg {
   max-width: 100%;
+}
+
+/* Zero horizontal bleed on decorative containers */
+.hero,
+.page-hero,
+.services-hero-compact,
+.about-hero-clean,
+.brand-ticker,
+.repair360,
+.about-reviews-section,
+.cta-section {
+  position: relative !important;
+  overflow: clip !important;
+  overflow-x: clip !important;
+}
+
+.hero-orb,
+.page-hero-ring,
+.orb-one,
+.orb-two,
+.ih-blob {
+  pointer-events: none !important;
+  max-width: 100vw !important;
 }
 
 /* Ensure flex and grid children can shrink below content size */
@@ -13478,8 +13513,10 @@ svg {
 .review-card,
 .feature,
 .experience-step,
-.stats-band .stat {
-  min-width: 0;
+.stats-band .stat,
+.flex-child,
+.grid-child {
+  min-width: 0 !important;
 }
 
 /* Fluid paragraph & heading wrapping across all responsive viewports */
@@ -13488,7 +13525,9 @@ svg {
 .choice-head > p,
 .choice-head h2,
 .timeline-head,
-.voices-one-line-title {
+.voices-one-line-title,
+.about-hero-title,
+.ih-headline {
   white-space: normal !important;
   overflow-wrap: break-word !important;
   word-break: normal !important;
@@ -13509,24 +13548,24 @@ svg {
   }
 }
 
-/* 3. Laptop & Medium Screens (901px to 1180px) */
-@media (min-width: 901px) and (max-width: 1180px) {
+/* 3. Laptop & Compact Desktop Screens (1025px to 1439px) */
+@media (min-width: 1025px) and (max-width: 1439px) {
   .nav {
     width: min(100% - 32px, 1220px) !important;
   }
 
   .nav nav {
-    gap: clamp(6px, 1vw, 12px) !important;
-    margin: 0 clamp(8px, 1.4vw, 20px) !important;
+    gap: clamp(6px, 1.1vw, 12px) !important;
+    margin: 0 clamp(8px, 1.5vw, 24px) !important;
   }
 
   .nav nav a {
-    font-size: 13.5px !important;
-    padding: 7px clamp(6px, 0.9vw, 12px) !important;
+    font-size: clamp(13px, 0.95vw, 14.5px) !important;
+    padding: 7px clamp(6px, 0.8vw, 12px) !important;
   }
 
   .nav-actions {
-    gap: clamp(10px, 1.2vw, 16px) !important;
+    gap: clamp(8px, 1vw, 16px) !important;
   }
 
   .nav-actions .phone {
@@ -13534,39 +13573,54 @@ svg {
   }
 
   .nav-actions .phone b {
-    font-size: 12.5px !important;
+    font-size: clamp(12px, 0.85vw, 13px) !important;
   }
 
   .nav-actions .button {
     padding: 9px 16px !important;
     font-size: 11px !important;
   }
+
+  .experience-grid {
+    gap: clamp(36px, 4vw, 60px) !important;
+  }
+
+  .showcase-row {
+    gap: clamp(32px, 3.5vw, 50px) !important;
+    padding: 56px 0 !important;
+  }
+
+  .service-layout {
+    gap: clamp(40px, 4.5vw, 64px) !important;
+  }
 }
 
-/* 4. Unified Mobile Header & Navigation (<= 900px) */
-@media (max-width: 900px) {
+/* 4. THE 50% SPLIT-SCREEN & TABLET ZONE (769px to 1024px) */
+/* Optimized for 960px half-screen window on 1920px monitors & 1024px displays */
+@media (max-width: 1024px) {
+  /* Container & Universal Fluid Widths */
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: clamp(18px, 2.8vw, 32px) !important;
+    padding-right: clamp(18px, 2.8vw, 32px) !important;
+  }
+
+  /* Header & Navigation */
   .site-header {
-    height: 70px !important;
+    height: 72px !important;
   }
 
   .nav {
     position: static !important;
     width: 100% !important;
-    padding: 0 20px !important;
+    padding: 0 clamp(16px, 2.5vw, 28px) !important;
     justify-content: space-between !important;
   }
 
   .brand-logo-img {
     height: 44px !important;
     width: auto !important;
-  }
-
-  .nav-actions .phone {
-    display: none !important;
-  }
-
-  .nav-actions .compact {
-    display: none !important;
   }
 
   .menu {
@@ -13614,7 +13668,7 @@ svg {
   /* Full-width sliding mobile navigation drawer */
   .nav nav {
     position: absolute !important;
-    top: 70px !important;
+    top: 72px !important;
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
@@ -13658,7 +13712,6 @@ svg {
     border-bottom: none !important;
   }
 
-  /* Mobile Sidebar: Strictly ONLY .active gets the selected highlight */
   .nav nav a.active {
     color: var(--light-gold, #f4d785) !important;
     background: rgba(255, 255, 255, 0.08) !important;
@@ -13690,10 +13743,372 @@ svg {
 
   .mobile-nav-backdrop {
     position: fixed;
-    inset: 70px 0 0 0;
+    inset: 72px 0 0 0;
     background: rgba(15, 2, 6, 0.55);
     backdrop-filter: blur(4px);
     z-index: 1000;
+  }
+
+  /* Half-screen action buttons in header */
+  .nav-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  .nav-actions .compact {
+    display: inline-flex !important;
+    padding: 9px 18px !important;
+    font-size: 11px !important;
+  }
+
+  .nav-actions .phone {
+    display: inline-flex !important;
+    padding: 6px 10px !important;
+  }
+
+  .nav-actions .phone b {
+    display: none !important;
+  }
+
+  /* HOME PAGE: Hero Banner Proportions at 50% Screen */
+  .ivenus-hero {
+    padding: 92px 0 1.8rem !important;
+  }
+
+  .ih-box.dark-banner {
+    min-height: 290px !important;
+    height: auto !important;
+    background-position: 75% center !important;
+  }
+
+  .ih-box.dark-banner .ih-left {
+    max-width: 65% !important;
+    width: 65% !important;
+    padding: 28px 24px !important;
+  }
+
+  .ih-box.dark-banner .ih-headline {
+    font-size: clamp(1.4rem, 2.4vw, 1.95rem) !important;
+    line-height: 1.25 !important;
+  }
+
+  .ih-box.dark-banner .ih-sub {
+    font-size: 13.5px !important;
+    line-height: 1.6 !important;
+    max-width: 100% !important;
+  }
+
+  .ih-box.dark-banner .ih-ctas {
+    gap: 0.85rem !important;
+  }
+
+  .ih-box {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .ih-store-img {
+    width: clamp(230px, 28vw, 310px) !important;
+    height: auto !important;
+    max-width: 36% !important;
+    object-fit: contain !important;
+  }
+
+  .ih-left {
+    flex: 1 1 auto !important;
+    padding: 26px 22px !important;
+  }
+
+  .ih-stats {
+    gap: 1.2rem !important;
+  }
+
+  /* HOME PAGE: Stats Band 2x2 Clean Grid */
+  .stats-band .stats {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 18px 20px !important;
+    padding: 26px 12px !important;
+    width: 100% !important;
+  }
+
+  .stats-band .stat {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 14px 12px !important;
+    gap: 6px !important;
+    border-radius: 14px !important;
+    background: #fdfbf7 !important;
+    border: 1px solid rgba(212, 175, 55, 0.22) !important;
+    box-shadow: 0 4px 12px rgba(104, 20, 44, 0.03) !important;
+  }
+
+  .stats-band .stat-number {
+    font-size: clamp(26px, 3.5vw, 34px) !important;
+    margin: 0 !important;
+  }
+
+  .stats-band .stat-label {
+    font-size: 10.5px !important;
+    text-align: center !important;
+    letter-spacing: 0.8px !important;
+    max-width: 100% !important;
+  }
+
+  .stats-band .stat-divider {
+    display: none !important;
+  }
+
+  /* HOME PAGE: Services Preview 2-Column Grid */
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .service-card {
+    min-width: 0 !important;
+  }
+
+  /* HOME PAGE: Motion Products Proportional Layout */
+  .showcase-row {
+    grid-template-columns: 1fr 1fr !important;
+    gap: clamp(24px, 3.2vw, 40px) !important;
+    padding: 48px 0 !important;
+  }
+
+  .s-visual img {
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 280px !important;
+  }
+
+  .s-text h3 {
+    font-size: clamp(24px, 2.8vw, 30px) !important;
+  }
+
+  .s-text p {
+    max-width: 100% !important;
+    font-size: 14.5px !important;
+    line-height: 1.65 !important;
+  }
+
+  /* HOME PAGE: Experience Section */
+  .experience-grid {
+    display: grid !important;
+    grid-template-columns: minmax(280px, 0.85fr) minmax(340px, 1.15fr) !important;
+    gap: clamp(28px, 3.8vw, 44px) !important;
+    align-items: start !important;
+  }
+
+  .experience-intro {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 110px !important;
+  }
+
+  .experience-step {
+    padding: 28px 24px !important;
+  }
+
+  /* HOME PAGE: Products Preview Rows */
+  .product-row {
+    gap: 28px !important;
+  }
+
+  .product-row-info h3 {
+    font-size: 26px !important;
+  }
+
+  /* HOME PAGE: 3D Laptop Interactive Viewer Section */
+  .repair-container {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    padding: 0 20px !important;
+    text-align: center !important;
+  }
+
+  .repair-content {
+    max-width: 640px !important;
+    margin: 0 auto !important;
+  }
+
+  .repair-eyebrow {
+    justify-content: center !important;
+  }
+
+  .repair-services {
+    justify-content: center !important;
+  }
+
+  .laptop-scene {
+    height: 380px !important;
+    width: 100% !important;
+    max-width: 580px !important;
+    margin: 0 auto !important;
+  }
+
+  #laptop3D {
+    height: 360px !important;
+    width: 100% !important;
+  }
+
+  /* HOME PAGE: Client Reviews 2-Column Balanced Cards */
+  .reviews-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 22px !important;
+    margin-top: 36px !important;
+  }
+
+  .review-card {
+    padding: 26px 22px !important;
+    min-width: 0 !important;
+  }
+
+  /* SERVICES PAGE: Reflowed Catalog & Sticky Aside */
+  .service-layout {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+
+  .service-aside,
+  .faq-title,
+  .experience-intro {
+    position: static !important;
+  }
+
+  .service-aside {
+    max-width: 100% !important;
+  }
+
+  .manifesto-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .diagnostic-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .support-split {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  /* PRODUCTS PAGE: 2-Column Catalog Grid */
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .catalog-card.feature-card,
+  .catalog-card.portrait-card,
+  .catalog-card {
+    grid-column: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: auto !important;
+  }
+
+  .feature-card .catalog-visual,
+  .portrait-card .catalog-visual,
+  .catalog-visual {
+    height: 220px !important;
+    min-height: 220px !important;
+    max-height: 220px !important;
+  }
+
+  /* ABOUT PAGE: Reflowed Hero, Split Story & Stats */
+  .about-hero-title .heading-line,
+  .story-left h2 .heading-line {
+    white-space: normal !important;
+    display: inline !important;
+  }
+
+  .about-hero-container,
+  .story-split-grid,
+  .about-cta-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+
+  .about-hero-img {
+    height: clamp(260px, 38vw, 360px) !important;
+    width: 100% !important;
+  }
+
+  .about-stats-grid,
+  .milestones-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 18px !important;
+  }
+
+  .about-reviews-section {
+    overflow: hidden !important;
+    position: relative !important;
+  }
+
+  .voices-grid {
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+
+  .voice-card-luxury {
+    min-width: min(340px, calc(100vw - 48px)) !important;
+  }
+
+  /* CONTACT PAGE: Responsive Choice Grid, Form & Map */
+  .choice-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+    gap: 18px !important;
+  }
+
+  .choice-card {
+    min-width: 0 !important;
+    padding: 24px 20px !important;
+  }
+
+  .choice-card-value {
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    font-size: clamp(15px, 2vw, 18px) !important;
+  }
+
+  .contact-form-layout,
+  .visit-grid,
+  .faq-layout {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .form-intro,
+  .premium-form {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .visit-map {
+    height: clamp(340px, 45vw, 440px) !important;
+    width: 100% !important;
+  }
+
+  /* FOOTER: Balanced 2x2 Grid at 50% Screen */
+  .footer-grid-luxury {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 36px !important;
+  }
+
+  /* Animation bounds on half-screen: vertical entrance only to eliminate off-screen drift */
+  body.fx-ready .fx-target.from-left,
+  body.fx-ready .fx-target.from-right {
+    transform: translateY(24px) !important;
   }
 }
 
@@ -13721,104 +14136,16 @@ svg {
   }
 }
 
-/* 6. Tablet & Small Laptop Refinements (769px to 991px) */
-@media (max-width: 991px) {
-  .container {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding-left: 24px !important;
-    padding-right: 24px !important;
-  }
-
-  .service-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
-  }
-
-  .experience-grid,
-  .why-grid,
-  .manifesto-grid,
-  .service-layout,
-  .faq-layout {
-    grid-template-columns: 1fr !important;
-    gap: 40px !important;
-  }
-
-  .service-aside,
-  .faq-title,
-  .experience-intro {
-    position: static !important;
-  }
-
-  .catalog-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
-  }
-
-  .catalog-card.feature-card,
-  .catalog-card.portrait-card,
-  .catalog-card {
-    grid-column: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    min-height: auto !important;
-  }
-
-  .feature-card .catalog-visual,
-  .portrait-card .catalog-visual,
-  .catalog-visual {
-    height: 220px !important;
-    min-height: 220px !important;
-    max-height: 220px !important;
-  }
-
-  .repair-container {
-    grid-template-columns: 1fr !important;
-    gap: 36px !important;
-    padding: 0 24px !important;
-  }
-
-  .laptop-scene {
-    height: 380px !important;
-  }
-
-  .about-hero-title .heading-line,
-  .story-left h2 .heading-line {
-    white-space: normal !important;
-    display: inline !important;
-  }
-
-  .about-hero-container,
-  .story-split-grid,
-  .about-cta-grid {
-    grid-template-columns: 1fr !important;
-    gap: 36px !important;
-  }
-
-  .about-hero-img {
-    height: clamp(260px, 42vw, 380px) !important;
-  }
-
-  .about-stats-grid,
-  .milestones-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 18px !important;
-  }
-
-  .contact-form-layout,
-  .visit-grid {
-    grid-template-columns: 1fr !important;
-    gap: 32px !important;
-  }
-
-  .footer-grid-luxury {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 36px !important;
-  }
-}
-
-/* 7. Tablet Portrait & Medium Mobile (601px to 768px) */
+/* 6. Tablet Portrait & Medium Mobile (601px to 768px) */
 @media (max-width: 768px) {
+  .nav-actions .phone {
+    display: none !important;
+  }
+
+  .nav-actions .compact {
+    display: none !important;
+  }
+
   .section,
   .section-large {
     padding-top: 48px !important;
@@ -13868,6 +14195,146 @@ svg {
     max-width: 100% !important;
     width: 100% !important;
     padding: 28px 24px !important;
+  }
+
+  .ih-box {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    border-radius: 20px !important;
+  }
+
+  .ih-left {
+    padding: 1.8rem 1.5rem 1rem !important;
+    align-items: center !important;
+  }
+
+  .ih-sub {
+    white-space: normal !important;
+    text-align: center !important;
+  }
+
+  .ih-ctas {
+    justify-content: center !important;
+  }
+
+  .ih-stats {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+    border-top: none !important;
+    padding-top: 0 !important;
+  }
+
+  .ih-stat {
+    padding: 0 1.2rem !important;
+  }
+
+  .ih-divider {
+    display: none !important;
+  }
+
+  .ih-visual {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .ih-store-img {
+    width: 280px !important;
+    height: auto !important;
+    object-position: center bottom !important;
+    max-width: 100% !important;
+  }
+
+  .showcase-row {
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+    padding: 44px 0 !important;
+  }
+
+  .showcase-row.rev .s-visual,
+  .showcase-row.rev .s-text {
+    order: 0 !important;
+  }
+
+  .tag-chip {
+    right: 4% !important;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+
+  .experience-intro {
+    position: static !important;
+  }
+
+  .experience-steps {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+  }
+
+  .experience-step {
+    opacity: 1 !important;
+    transform: none !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(104, 20, 44, 0.12) !important;
+    border-radius: 16px !important;
+    padding: 24px 20px !important;
+  }
+
+  .product-row,
+  .product-row.reverse {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .product-row.reverse .product-row-info {
+    order: 2 !important;
+  }
+
+  .product-row.reverse .product-row-visual {
+    order: 1 !important;
+  }
+
+  .manifesto-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Home Reviews Mobile Horizontal Slider */
+  .client-reviews-section {
+    overflow: hidden !important;
+  }
+
+  .client-reviews-section .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .client-reviews-section .section-head {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .reviews-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    gap: 16px !important;
+    padding: 12px 20px 24px !important;
+    margin-top: 24px !important;
+    box-sizing: border-box !important;
   }
 
   .services-hero-compact,
@@ -14546,4 +15013,91 @@ blockquote, q, cite, article, section, div, label,
 .badge, .badge *,
 .footer, footer, footer * {
   font-family: var(--font-poppins) !important;
+}
+
+/* =====================================================================
+   FINAL WIDE-SCREEN LAYOUT CORRECTION
+   Keeps the original design while allowing the site to use more of the
+   available space on large monitors at the normal 100% browser zoom.
+   This intentionally does NOT counteract browser zoom with scaling hacks.
+   ===================================================================== */
+@media (min-width: 1440px) {
+  .container {
+    width: min(88vw, 1680px) !important;
+    max-width: 1680px !important;
+    margin-inline: auto !important;
+  }
+
+  .nav {
+    width: min(88vw, 1680px) !important;
+    max-width: 1680px !important;
+    margin-inline: auto !important;
+  }
+
+  /* Keep major content areas aligned to the same wide-screen grid. */
+  .experience-grid,
+  .service-layout,
+  .showcase-row,
+  .why-grid,
+  .catalog-grid,
+  .products-grid,
+  .service-index-grid {
+    max-width: 100% !important;
+  }
+
+  .ivenus-hero .container,
+  .stats-band .container,
+  .brand-intro .container,
+  .motion-heading.container,
+  .experience-section .container {
+    width: min(88vw, 1680px) !important;
+    max-width: 1680px !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container,
+  .nav,
+  .ivenus-hero .container,
+  .stats-band .container,
+  .brand-intro .container,
+  .motion-heading.container,
+  .experience-section .container {
+    width: min(88vw, 1840px) !important;
+    max-width: 1840px !important;
+  }
+}
+
+@media (min-width: 2560px) {
+  .container,
+  .nav,
+  .ivenus-hero .container,
+  .stats-band .container,
+  .brand-intro .container,
+  .motion-heading.container,
+  .experience-section .container {
+    width: min(86vw, 2048px) !important;
+    max-width: 2048px !important;
+  }
+}
+
+/* Avoid a wide monitor making the hero banner look disproportionately short. */
+@media (min-width: 1920px) {
+  .ih-box.dark-banner {
+    min-height: clamp(260px, 16vw, 340px) !important;
+  }
+
+  .ih-box.dark-banner .ih-left {
+    padding: clamp(36px, 2.5vw, 56px) !important;
+  }
+
+  .ih-box.dark-banner .ih-headline {
+    font-size: clamp(34px, 1.9vw, 44px) !important;
+    line-height: 1.15 !important;
+  }
+
+  .ih-box.dark-banner .ih-sub {
+    font-size: clamp(14px, 0.78vw, 17px) !important;
+    line-height: 1.65 !important;
+  }
 }
