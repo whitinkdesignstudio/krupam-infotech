@@ -965,15 +965,15 @@ export default function Home() {
 
             {/* 02 DESKTOP */}
             <div className="showcase-row rev reveal">
+              <div className="s-visual">
+                <span className="tag-chip">Desktops</span>
+                <img src="/assets/images/showcase-desktop.png" alt="Desktop Monitor - High Performance Systems" loading="lazy" />
+              </div>
               <div className="s-text">
                 <span className="s-num">02</span>
                 <h3>Desktops</h3>
                 <p>Full systems built for power, reliability and easy upgrades — configured for home, office or studio use.</p>
                 <Link to="/products" className="btn-text">Explore Desktops <span className="ar">→</span></Link>
-              </div>
-              <div className="s-visual">
-                <span className="tag-chip">Desktops</span>
-                <img src="/assets/images/showcase-desktop.png" alt="Desktop Monitor - High Performance Systems" loading="lazy" />
               </div>
             </div>
 
@@ -993,15 +993,15 @@ export default function Home() {
 
             {/* 04 BUSINESS SYSTEM */}
             <div className="showcase-row rev reveal">
+              <div className="s-visual">
+                <span className="tag-chip">Business Systems</span>
+                <img src="/assets/images/showcase-tablet.png" alt="Business Systems - Corporate Tablets & Workstations" loading="lazy" />
+              </div>
               <div className="s-text">
                 <span className="s-num">04</span>
                 <h3>Business Systems</h3>
                 <p>Bulk laptops, tablets and desktops — sourced, configured and delivered for growing teams.</p>
                 <Link to="/contact" className="btn-text">Talk Business <span className="ar">→</span></Link>
-              </div>
-              <div className="s-visual">
-                <span className="tag-chip">Business Systems</span>
-                <img src="/assets/images/showcase-tablet.png" alt="Business Systems - Corporate Tablets & Workstations" loading="lazy" />
               </div>
             </div>
           </div>

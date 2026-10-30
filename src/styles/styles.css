@@ -7758,9 +7758,14 @@ body {
     padding: 54px 0;
   }
 
-  .showcase-row.rev .s-visual,
+  .showcase-row .s-visual,
+  .showcase-row.rev .s-visual {
+    order: 1;
+  }
+
+  .showcase-row .s-text,
   .showcase-row.rev .s-text {
-    order: 0;
+    order: 2;
   }
 
   .tag-chip {
@@ -8366,12 +8371,14 @@ img {
     padding: 50px 0;
   }
 
+  .showcase-row .s-visual,
   .showcase-row.rev .s-visual {
-    order: 0;
+    order: 1;
   }
 
+  .showcase-row .s-text,
   .showcase-row.rev .s-text {
-    order: 1;
+    order: 2;
   }
 
   .s-visual {
@@ -13882,6 +13889,14 @@ svg {
     padding: 48px 0 !important;
   }
 
+  .showcase-row.rev .s-visual {
+    order: 2 !important;
+  }
+
+  .showcase-row.rev .s-text {
+    order: 1 !important;
+  }
+
   .s-visual img {
     max-width: 100% !important;
     height: auto !important;
@@ -14252,9 +14267,14 @@ svg {
     padding: 44px 0 !important;
   }
 
-  .showcase-row.rev .s-visual,
+  .showcase-row .s-visual,
+  .showcase-row.rev .s-visual {
+    order: 1 !important;
+  }
+
+  .showcase-row .s-text,
   .showcase-row.rev .s-text {
-    order: 0 !important;
+    order: 2 !important;
   }
 
   .tag-chip {
