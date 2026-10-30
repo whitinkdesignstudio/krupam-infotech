@@ -1,13 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 
+const SERVICES_LIST = [
+  { code: '01', title: 'Computer & Laptop Repair', hash: 'service-01' },
+  { code: '02', title: 'Computers & Workstations', hash: 'service-02' },
+  { code: '03', title: 'CCTV Repair & Service', hash: 'service-03' },
+  { code: '04', title: 'Software Development', hash: 'service-04' },
+  { code: '05', title: 'Hardware & Peripherals', hash: 'service-05' },
+  { code: '06', title: 'Monitor & Display Repair', hash: 'service-06' },
+  { code: '07', title: 'Printers, Parts & Software', hash: 'service-07' },
+  { code: '08', title: 'Office Equipment Care', hash: 'service-08' },
+  { code: '09', title: 'User Interface Design', hash: 'service-09' }
+];
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsServicesOpen(false);
   }, [location]);
 
   useEffect(() => {
@@ -17,6 +31,7 @@ export default function Header() {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         setIsMenuOpen(false);
+        setIsServicesOpen(false);
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -27,7 +42,10 @@ export default function Header() {
     };
   }, []);
 
-  const closeMenu = () => setIsMenuOpen(false);
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    setIsServicesOpen(false);
+  };
 
   const getNavLinkClass = (targetPath) => {
     const current = location.pathname;
@@ -55,13 +73,81 @@ export default function Header() {
           >
             Home
           </NavLink>
-          <NavLink
-            to="/services"
-            className={() => getNavLinkClass('/services')}
-            onClick={closeMenu}
+
+          {/* Services Dropdown */}
+          <div
+            className={`nav-dropdown ${isServicesOpen ? 'open' : ''}`}
+            onMouseEnter={() => {
+              if (window.innerWidth > 1024) setIsServicesOpen(true);
+            }}
+            onMouseLeave={() => {
+              if (window.innerWidth > 1024) setIsServicesOpen(false);
+            }}
           >
-            Services
-          </NavLink>
+            <div className="nav-dropdown-header">
+              <NavLink
+                to="/services"
+                className={() => `${getNavLinkClass('/services')} nav-dropdown-link`}
+                onClick={(e) => {
+                  if (window.innerWidth <= 1024) {
+                    e.preventDefault();
+                    setIsServicesOpen((prev) => !prev);
+                  } else {
+                    closeMenu();
+                  }
+                }}
+              >
+                <span>Services</span>
+                <span
+                  className={`nav-dropdown-toggle-icon ${isServicesOpen ? 'rotated' : ''}`}
+                  aria-hidden="true"
+                >
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </span>
+              </NavLink>
+            </div>
+
+            <div className={`nav-dropdown-menu ${isServicesOpen ? 'show' : ''}`}>
+              <div className="dropdown-menu-inner">
+                <Link
+                  to="/services"
+                  className="dropdown-item dropdown-item-all"
+                  onClick={closeMenu}
+                >
+                  <span className="dropdown-all-text">All Services Overview</span>
+                  <span className="dropdown-arrow">→</span>
+                </Link>
+
+                <div className="dropdown-divider" />
+
+                <div className="dropdown-items-grid">
+                  {SERVICES_LIST.map((srv) => (
+                    <Link
+                      key={srv.code}
+                      to={`/services#${srv.hash}`}
+                      className="dropdown-item"
+                      onClick={closeMenu}
+                    >
+                      <span className="dropdown-item-code">{srv.code}</span>
+                      <span className="dropdown-item-title">{srv.title}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
           <NavLink
             to="/products"
             className={() => getNavLinkClass('/products')}

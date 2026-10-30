@@ -83,9 +83,9 @@ export default function Services() {
             </Link>
           </aside>
 
-          <div className="service-index" data-stagger="true">
+          <div className="service-index" id="services-catalog" data-stagger="true">
             {/* Service 01 */}
-            <article className="service-index-card reveal" data-reveal="left">
+            <article className="service-index-card reveal" id="service-01" data-reveal="left">
               <span className="service-code">01</span>
               <div>
                 <h3>Computer &amp; laptop repair</h3>
@@ -108,7 +108,7 @@ export default function Services() {
             </article>
 
             {/* Service 02 */}
-            <article className="service-index-card reveal" data-reveal="right">
+            <article className="service-index-card reveal" id="service-02" data-reveal="right">
               <span className="service-code">02</span>
               <div>
                 <h3>Computers, laptops &amp; workstations</h3>
@@ -132,7 +132,7 @@ export default function Services() {
             </article>
 
             {/* Service 03 */}
-            <article className="service-index-card reveal" data-reveal="left">
+            <article className="service-index-card reveal" id="service-03" data-reveal="left">
               <span className="service-code">03</span>
               <div>
                 <h3>CCTV repair &amp; service</h3>
@@ -156,7 +156,7 @@ export default function Services() {
             </article>
 
             {/* Service 04 */}
-            <article className="service-index-card reveal" data-reveal="right">
+            <article className="service-index-card reveal" id="service-04" data-reveal="right">
               <span className="service-code">04</span>
               <div>
                 <h3>Software development</h3>
@@ -179,7 +179,7 @@ export default function Services() {
             </article>
 
             {/* Service 05 */}
-            <article className="service-index-card reveal" data-reveal="left">
+            <article className="service-index-card reveal" id="service-05" data-reveal="left">
               <span className="service-code">05</span>
               <div>
                 <h3>Hardware &amp; peripherals</h3>
@@ -204,7 +204,7 @@ export default function Services() {
             </article>
 
             {/* Service 06 */}
-            <article className="service-index-card reveal" data-reveal="right">
+            <article className="service-index-card reveal" id="service-06" data-reveal="right">
               <span className="service-code">06</span>
               <div>
                 <h3>Monitor &amp; display repair</h3>
@@ -228,7 +228,7 @@ export default function Services() {
             </article>
 
             {/* Service 07 */}
-            <article className="service-index-card reveal" data-reveal="left">
+            <article className="service-index-card reveal" id="service-07" data-reveal="left">
               <span className="service-code">07</span>
               <div>
                 <h3>Printers, parts &amp; software</h3>
@@ -253,7 +253,7 @@ export default function Services() {
             </article>
 
             {/* Service 08 */}
-            <article className="service-index-card reveal" data-reveal="right">
+            <article className="service-index-card reveal" id="service-08" data-reveal="right">
               <span className="service-code">08</span>
               <div>
                 <h3>Office equipment care</h3>
@@ -277,7 +277,7 @@ export default function Services() {
             </article>
 
             {/* Service 09 */}
-            <article className="service-index-card reveal" data-reveal="left">
+            <article className="service-index-card reveal" id="service-09" data-reveal="left">
               <span className="service-code">09</span>
               <div>
                 <h3>User interface design</h3>
