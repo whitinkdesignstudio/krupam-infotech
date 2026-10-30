@@ -34,11 +34,19 @@ export default function Header() {
         setIsServicesOpen(false);
       }
     };
+    const handleResize = () => {
+      if (window.innerWidth > 1024) {
+        setIsServicesOpen(false);
+        setIsMenuOpen(false);
+      }
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
